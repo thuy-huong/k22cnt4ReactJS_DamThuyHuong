@@ -30,6 +30,12 @@ class DTH_ClassComp extends Component {
         );
         
     }
+    handleChange = (Event) =>{
+        this.setState({
+            firstName: "Nguyễn Văn",
+            lastName: "A"
+        })
+    }
     render() {
         return (
             <div className='alert alert-danger'>
@@ -37,6 +43,7 @@ class DTH_ClassComp extends Component {
                 <hr/>
                 <h3> Dữ Liệu trong state </h3>
                 <h4> Xin chào: {this.state.firstName} {this.state.lastName} </h4>
+                <button onClick={this.handleChange} >Change name</button>
                 <hr/>
                 <h3>Dữ liệu từ props</h3>
                 <p>Company: {this.props.company} </p>
