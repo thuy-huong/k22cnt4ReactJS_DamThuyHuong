@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function DthListProduct({rederDthProducts}) {
     // console.log("ListProduct: ",rederDthProducts); Kiểm tra dữ liểu từ app đẩy sang component
-    const formatter = new Intl.NumberFormat('vi-VN', {
+    const dthFormatter = new Intl.NumberFormat('vi-VN', { //format giá tiền
         style: 'currency', 
         currency: 'VND'
       });
@@ -16,8 +16,8 @@ export default function DthListProduct({rederDthProducts}) {
                     <td>{dthProduct.dth_productId}</td>
                     <td>{dthProduct.dth_productName}</td>
                     <td>{dthProduct.dth_quantity}</td>
-                    <td>{formatter.format(dthProduct.dth_price)}</td> 
-                    <td>{formatter.format(dthProduct.dth_quantity*dthProduct.dth_price)}</td>
+                    <td>{dthFormatter.format(dthProduct.dth_price)}</td> 
+                    <td>{dthFormatter.format(dthProduct.dth_quantity*dthProduct.dth_price)}</td>
                     <td>
                         <button className='btn btn-success mx-1'>
                             <i class="fa-solid fa-pen-to-square"></i>
@@ -51,7 +51,7 @@ export default function DthListProduct({rederDthProducts}) {
             <tfoot>
                 <tr>
                     <th colSpan={5} className='text-end'>Tổng cộng: </th>
-                    <th colSpan={2} className='text-start'>{formatter.format(dthTong)}</th>
+                    <th colSpan={2} className='text-start'>{dthFormatter.format(dthTong)}</th>
 
                 </tr>
             </tfoot>
