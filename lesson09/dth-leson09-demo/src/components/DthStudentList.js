@@ -13,7 +13,7 @@ export default function DthStudentList({renderDthStudentList}) {
                 <td>{DthStudent.dthAge}</td>
                 <td>{DthStudent.dthPhone}</td>
                 <td>{DthStudent.dthEmail}</td>
-                <td>{DthStudent.dthStatus}</td>
+                <td>{DthStudent.dthStatus===true?"Hiển thị":"Ẩn"}</td>
                 <td>
                     <button className='btn btn-success mx-1'>
                         <i class="fa-solid fa-pen-to-square" ></i>
@@ -35,7 +35,7 @@ export default function DthStudentList({renderDthStudentList}) {
       <th scope="col">Mã sinh viên</th>
       <th scope="col">Họ tên</th>
       <th scope="col">Tuổi</th>
-      <th scope="col">Địa chỉ</th>
+      <th scope="col">Số điện thoại</th>
       <th scope="col">Email</th>
       <th scope="col">Trạng thái</th>
       <th scope="col">Chức năng</th>

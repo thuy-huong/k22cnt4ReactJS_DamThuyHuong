@@ -7,7 +7,7 @@ import DthApp from './DthApp';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <DthApp/>
+    <DthApp />
   </React.StrictMode>
 );
 

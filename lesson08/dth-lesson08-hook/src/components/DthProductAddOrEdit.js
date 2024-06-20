@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function DthProductAddOrEdit({dthOnSubmit}) {
+  export default function DthProductAddOrEdit({dthOnSubmit}) {
     const[dth_productId, setDth_productId] = useState('');
     const[dth_productName, setDth_productName] = useState('');
     const[dth_quantity, setDth_quantity] = useState(0);

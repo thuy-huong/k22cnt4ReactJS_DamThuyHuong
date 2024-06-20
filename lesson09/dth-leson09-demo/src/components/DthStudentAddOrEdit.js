@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 
 export default function DthStudentAddOrEdit({dthOnSubmit}) {
@@ -7,7 +8,7 @@ export default function DthStudentAddOrEdit({dthOnSubmit}) {
     const[dthPhone, setDthPhone] = useState(0);
     const[dthEmail, setDthEmail] = useState('');
     const[dthStatus, setDthStatus] = useState('true');
-
+    
     const dthHandleSubmit = (dthEvent)=>{
         dthEvent.preventDefault();
         let dthStudent = {
@@ -18,7 +19,11 @@ export default function DthStudentAddOrEdit({dthOnSubmit}) {
             dthEmail:dthEmail,
             dthStatus:dthStatus,
         }
-        dthOnSubmit(dthStudent)
+        axios.post(`https://666a99ae7013419182cffd68.mockapi.io/api/dthv1/dthStudent`, {dthStudent})
+        .then(() => {
+          console.log("NewStudent: ",dthStudent);
+        })
+        window.location.reload();
     }
   return (
     <div className='col-md-6'>

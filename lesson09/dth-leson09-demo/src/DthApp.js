@@ -24,17 +24,17 @@ function DthApp() {
   }, []);
 
   //Add student
-  const dthHandleSubmit = (dthStudent)=>{
-    // console.log("addOrEdit: ", dthStudent);
-    //Add
-    setDthStudentList((dthPrev) =>{
-      return[
-        ...dthPrev,
-        dthStudent
-      ]
-    })
+  // const dthHandleSubmit = (dthStudent)=>{
+  //   // console.log("addOrEdit: ", dthStudent);
+  //   //Add
+  //   setDthStudentList((dthPrev) =>{
+  //     return[
+  //       ...dthPrev,
+  //       dthStudent
+  //     ]
+  //   })
  
-  }
+  // }
 
   return (
     <div className='container border mt-5 p-3'>
@@ -42,7 +42,8 @@ function DthApp() {
       <hr/>
       <DthStudentList renderDthStudentList = {dthStudentList}  />
       <hr/>
-      <DthStudentAddOrEdit dthOnSubmit={dthHandleSubmit} />
+      <DthStudentAddOrEdit/>
+      {/* <DthStudentAddOrEdit dthOnSubmit={dthHandleSubmit} /> */}
     </div>
   );
 }
