@@ -1,6 +1,7 @@
 import DthListUsers from "./components/DthListUsers";
 import axios from "./api/dthApi";
 import { useEffect, useState } from "react";
+import DthAddOrEditUsers from "./components/DthAddOrEditUsers";
 function DthApp() {
   //Đọc dữ liệu từ API
   const [dthListUsers, setDthListUsers] = useState([]);
@@ -17,6 +18,8 @@ function DthApp() {
       <h1>Làm việc với Hook - API</h1>
       <hr/>
       <DthListUsers renderDthListUsers={dthListUsers}/>
+      <hr/>
+      <DthAddOrEditUsers/>
     </div>
   );
 }
