@@ -1,7 +1,7 @@
 import axios from '../dth_apis/dth_2210900028'
 import React, { useEffect, useState } from 'react'
 
-export default function DthFormTableName({rederDthTableName,onDthEdit}) {
+export default function DthFormTableName({rederDthTableName,onDthEdit,onCloseForm}) {
 
     const [dthId,setDthId] = useState(rederDthTableName.dthId)
     const [dthTbName,setDthTbName] = useState(rederDthTableName.dthTbName)
@@ -18,6 +18,10 @@ export default function DthFormTableName({rederDthTableName,onDthEdit}) {
 
     },[rederDthTableName])
     
+    const dthHandleClose = ()=>{
+      onCloseForm(false);
+    }
+
     const dthHanldeSubmit = async (dthEvent)=>{
         dthEvent.preventDefault();
         const dthObjTableName={
@@ -75,9 +79,10 @@ export default function DthFormTableName({rederDthTableName,onDthEdit}) {
                 <option value={false}>Non-Active</option>
             </select>
         </div>
-        <button className='btn btn-primary my-3' name='btnDthSave'
+        <button className='btn btn-primary  m-2' name='btnDthSave'
                 onClick={dthHanldeSubmit}
             >Save</button>
+        <button className='btn btn-danger' onClick={dthHandleClose}>Đóng</button>
       </form>
     </div>
   )

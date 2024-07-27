@@ -8,18 +8,32 @@ export default function DthApp() {
   const [dthListTableName,  setDthListTableName] = useState([])
 
   const dthGetTableName = async () => {
-    let dthResp = await axios.get('dthTableName');
-    console.log("API Data: ", dthResp);
-    setDthListTableName(dthResp.data);
+    try {
+      const dthResp = await axios.get("dthTableName");
+      console.log("API Data: ", dthResp);
+      setDthListTableName(dthResp.data);
+      
+    } catch (error) {
+      console.log("Lỗi: ",error);
+    }
+    // let dthResp = await axios.get('dthTableName');
+    // console.log("API Data: ", dthResp);
+    // setDthListTableName(dthResp.data);
   }
   useEffect(()=>{
     dthGetTableName();
-  })
+  },[])
   //Hàm xóa
   const DthHanldeDetele= async (dthId)=>{
     let dthRes = await axios.delete('dthTableName/'+dthId);
     dthGetTableName();
   }
+  //xét trạng thái from
+  const [dthCategoryIsForm, setCategoryIsForm] = useState(false);
+  const dthHandleCloseForm = (param)=>{
+    setCategoryIsForm(param);
+  }
+  
   const dthObjTableName = {
     "dthId": "2210900028",
     "dthTbName": "Đàm Thúy Hường",
@@ -35,12 +49,13 @@ export default function DthApp() {
   const DthHanldEdit = ()=>{
     dthGetTableName();
   }
-  const DthHanldADD = ()=>{
-    dthGetTableName();
-  }
+  // const DthHanldADD = ()=>{
+  //   dthGetTableName();
+  // }
 
   const dthHanldeEdit = (dthObjEditTableName)=>{
     setDthTableName(dthObjEditTableName)
+    setCategoryIsForm(true);
   }
 
   
@@ -50,7 +65,9 @@ export default function DthApp() {
       <hr/>
       <DthListTableName rederDthListTableName={dthListTableName} onDthDelete={DthHanldeDetele} onDthEdit={dthHanldeEdit} />
       <hr/>
-      <DthFormTableName rederDthTableName={dthTableName} onDthEdit={DthHanldEdit}/>
+      {
+        dthCategoryIsForm ===true? <DthFormTableName rederDthTableName={dthTableName} onDthEdit={DthHanldEdit}  onCloseForm={dthHandleCloseForm}/>:""
+      }
     </div>
   )
 }
